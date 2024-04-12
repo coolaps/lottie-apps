@@ -1,18 +1,19 @@
 "use client"
-import Image from "next/image";
+import React from 'react'
 
 // lottie
 import Lottie from "react-lottie";
-import * as animationData from "@/lottie/key_animation.json";
+import DataANIMATION from '@/lottie/data'
 
-export default function Home() {
+const PageDetail = ({params}) => {
+  const {id} = params
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen items-center justify-center">
       <Lottie
         options={{
           loop: true,
           autoplay: true,
-          animationData: animationData,
+          animationData: DataANIMATION[id].animation,
           rendererSettings: {
             preserveAspectRatio: "xMidYMid slice",
           },
@@ -23,5 +24,7 @@ export default function Home() {
         isPaused={false}
       />
     </main>
-  );
+  )
 }
+
+export default PageDetail
